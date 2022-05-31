@@ -16,6 +16,16 @@ def posts(request):
         "posts": posts
     })
 
+def recent_posts(request):
+    # ASC => Without -
+    # DESC => With - like ".order_by(-created_date)"
+    # recent_posts = Post.objects.all().order_by("created_date") # SELECT * FROM posts ORDER BY created_date [ASC]
+    recent_posts = Post.objects.all().order_by("-created_date") # SELECT * FROM posts ORDER BY created_date DESC
+
+    return render(request, "recent-posts.html", {
+        "recent_posts": recent_posts
+    })
+
 def post(request, id):
     post = Post.objects.get(id=id)
 

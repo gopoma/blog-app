@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recent Posts</title>
+    <style>
+        .wrapper {
+            width: calc(100% - 2rem);
+            margin: 0 1rem;
+        }
+        .posts {
+            display: grid;
+            gap: 1.2rem;
+            grid-template-columns: repeat(1, 1fr);
+        }
+        .post {
+            padding: 0.75rem;
+            background-color: crimson;
+        }
+        .post__title {
+            font-size: 1.2rem;
+            text-align: center;
+        }
+        .post__link-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .post__link {
+            padding: 0.5rem;
+            border-radius: 4px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+        }
+        .post__img-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .post__img {
+            width: 200px;
+            height: 200px;
+            border-radius: 12px;
+        }
+
+        @media screen and (min-width: 680px) {
+            .posts {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media screen and (min-width: 1024px) {
+            .wrapper {
+                width: 100%;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            .posts {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .post__link:hover {
+                background-color: #F3F3F3;
+                color: #000;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Recent Posts</h1>
+    <a href="/">Home</a>
+    
+    <section>
+        <div class="wrapper posts">
+        {% for recent_post in recent_posts %}
+            <article class="post">
+                <h2 class="post__title">{{ recent_post.title }}</h2>
+                <div class="post__link-container">
+                    <a class="post__link" href="/posts/{{ recent_post.id }}">Go there</a>
+                </div>
+                <p>{{ recent_post.created_date }}</p>
+                <p class="post__description">{{ recent_post.description }}</p>
+                <div class="post__img-container">
+                    <img class="post__img" src="{{ recent_post.img }}" alt="{{ recent_post.title }}">
+                </div>
+            </article>
+        {% endfor %}
+        </div>
+    </section>
+</body>
+</html>
