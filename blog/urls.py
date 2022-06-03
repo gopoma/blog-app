@@ -16,12 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from posts.views import home, posts, recent_posts, post
+from posts.views import home, posts, recent_posts, post, create_post
 
 urlpatterns = [
     path('', home), # / Home
     path('admin/', admin.site.urls),
     path('posts/', posts),
     path('recent-posts/', recent_posts),
+    path('posts/create', create_post),
     path('posts/<int:id>', post)
 ]
