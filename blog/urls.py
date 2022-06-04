@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from posts.views import home, posts, recent_posts, post, create_post
+from posts.views import home, posts, recent_posts, post, create_post, edit_post
 
 urlpatterns = [
     path('', home), # / Home
@@ -24,5 +24,7 @@ urlpatterns = [
     path('posts/', posts),
     path('recent-posts/', recent_posts),
     path('posts/create', create_post),
-    path('posts/<int:id>', post)
+    path('posts/<int:id>', post),
+    path('posts/edit/<int:id>', edit_post),
+    # path('posts/edit/<int:id>/<str:year>', edit_post)
 ]

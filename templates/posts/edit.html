@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDIT Post</title>
+</head>
+<body>
+    <h1>EDIT Post</h1>
+    <form action="/posts/edit/{{ post.id }}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="title" placeholder="Title" value="{{ post.title }}">
+        <input type="text" name="description" placeholder="Description" value="{{ post.description }}">
+        <input type="text" name="img" placeholder="Image" value="{{ post.img }}">
+        <textarea name="content" cols="30" rows="10">{{ post.content }}</textarea>
+        <button>EDIT</button>
+    </form>
+</body>
+</html>

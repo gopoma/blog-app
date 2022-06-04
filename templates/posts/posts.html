@@ -25,8 +25,11 @@
                     <a href="/posts/{{ post.id }}">Go there</a>
                     <p>{{ post.created_date }}</p>
                     <p class="card-text">{{ post.description }}</p>
+                    <a href="/posts/edit/{{ post.id }}">UPDATE Post</a>
                 </div>
-                <img class="card-img-bottom" src="{{ post.img }}" alt="{{ post.title }}" width="200" height="200">
+                <a href="/posts/{{ post.id }}">
+                    <img class="card-img-bottom" src="{{ post.img }}" alt="{{ post.title }}" width="200" height="200">
+                </a>
             </article>
         </div>
         {% endfor %}
