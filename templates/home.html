@@ -9,7 +9,15 @@
 <body>
     <h1>Home</h1>
     <a href="/posts">Posts</a>
-    <br>
-    <a href="/auth/login">Login</a>
+    {% if user.is_authenticated %}
+        <p>{{ user.first_name }} {{ user.last_name }}</p>
+        <p>{{ user.username }}</p>
+        <a href="/auth/logout">LogOut</a>
+    {% else %}
+        <br>
+        <a href="/auth/login">Login</a>
+        <br>
+        <a href="/auth/signup">SignUp</a>
+    {% endif %}
 </body>
 </html>
